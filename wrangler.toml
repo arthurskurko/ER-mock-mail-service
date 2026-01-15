@@ -1,0 +1,7 @@
+name = "mock-graph-mail"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mock_graph_mail"
+database_id = "REPLACE_ME_IN_CLOUDFLARE"
