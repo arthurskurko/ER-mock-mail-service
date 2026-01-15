@@ -1,9 +1,5 @@
 # Mock Microsoft Graph Mail Service (A1 + B1)
 
-Chosen approach:
-- **A1**: Cloudflare local runtime via **Wrangler Pages dev** (fixes asset 500s / undefined.fetch)
-- **B1**: Vanilla Tailwind “mini design system” (cards, buttons, inputs, tables)
-
 ## Run with Docker
 ```bash
 docker compose down -v
