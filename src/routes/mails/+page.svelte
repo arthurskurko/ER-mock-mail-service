@@ -1,12 +1,12 @@
 <script lang="ts">
-  export let data: { mails: Array<{ id: string; created_at: string; subject: string | null; to_json: string }> };
+  export let data: { mails: Array<{ id: string; created_at: string; subject: string | null; to_name: string | null; to_json: string }> };
 </script>
 
 <h1 class="text-xl font-semibold mb-4">Sent mails</h1>
 
 {#if data.mails.length === 0}
   <div class="card text-sm text-gray-600">
-    No emails yet. Send one from <a class="underline" href="/tester">API Tester</a>.
+    No emails yet. Send one from <a class="underline" href="/send">Send Email</a>.
   </div>
 {:else}
   <div class="card p-0 overflow-hidden">
@@ -14,6 +14,7 @@
       <thead>
         <tr>
           <th class="th">Date</th>
+          <th class="th">Name</th>
           <th class="th">To</th>
           <th class="th">Subject</th>
         </tr>
@@ -22,6 +23,7 @@
         {#each data.mails as m}
           <tr class="border-t hover:bg-gray-50">
             <td class="td whitespace-nowrap">{new Date(m.created_at).toLocaleString()}</td>
+            <td class="td">{m.to_name || '—'}</td>
             <td class="td">{JSON.parse(m.to_json).map((x:any)=>x.address).join(', ')}</td>
             <td class="td">
               <a class="underline" href={`/mails/${m.id}`}>{m.subject || '(no subject)'}</a>

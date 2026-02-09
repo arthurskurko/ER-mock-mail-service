@@ -8,6 +8,7 @@
       <a href="/" class="font-semibold">Mock Graph Mail</a>
       <nav class="flex gap-4 text-sm">
         <a class="hover:underline" href="/mails">Mails</a>
+        <a class="hover:underline" href="/send">Send Email</a>
         <a class="hover:underline" href="/tester">API Tester</a>
         <a class="hover:underline" href="/docs">Docs</a>
       </nav>

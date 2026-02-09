@@ -19,6 +19,10 @@ export class MailService {
     const msg = parsed.data.message;
 
     const to = msg.toRecipients.map((r) => r.emailAddress);
+    const toName = msg.toRecipients
+      .map((r) => r.emailAddress.name ?? r.emailAddress.address)
+      .filter(Boolean)
+      .join(', ') || null;
     const cc = msg.ccRecipients?.map((r) => r.emailAddress) ?? null;
     const bcc = msg.bccRecipients?.map((r) => r.emailAddress) ?? null;
 
@@ -28,6 +32,7 @@ export class MailService {
       subject: msg.subject ?? '',
       body_content: msg.body?.content ?? null,
       body_content_type: msg.body?.contentType ?? null,
+      to_name: toName,
       to_json: JSON.stringify(to),
       cc_json: cc ? JSON.stringify(cc) : null,
       bcc_json: bcc ? JSON.stringify(bcc) : null,

@@ -1,0 +1,1 @@
+ALTER TABLE emails ADD COLUMN to_name TEXT;

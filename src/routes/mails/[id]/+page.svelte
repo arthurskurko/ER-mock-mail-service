@@ -9,6 +9,7 @@
 
 <div class="card mt-4 space-y-3">
   <div class="text-sm text-gray-600">{new Date(data.mail.created_at).toLocaleString()}</div>
+  {#if data.mail.to_name}<div><span class="font-medium">Name:</span> {data.mail.to_name}</div>{/if}
   <div><span class="font-medium">To:</span> {to}</div>
   {#if cc}<div><span class="font-medium">Cc:</span> {cc}</div>{/if}
   {#if bcc}<div><span class="font-medium">Bcc:</span> {bcc}</div>{/if}
