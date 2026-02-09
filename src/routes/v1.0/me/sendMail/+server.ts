@@ -11,6 +11,13 @@ export async function POST({ request, platform }) {
     return json({ error: 'Invalid JSON' }, { status: 400 });
   }
 
+  const subject = (payload as any)?.subject ?? (payload as any)?.message?.subject;
+  const body = (payload as any)?.body ?? (payload as any)?.message?.body?.content ?? (payload as any)?.message?.body;
+
+  if (!subject || !body) {
+    return json({ error: 'Subject and body are required' }, { status: 400 });
+  }
+
   try {
     const service = new MailService(new MailRepo(getDb(platform)));
     const res = await service.sendMail(payload);

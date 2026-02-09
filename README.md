@@ -14,6 +14,14 @@ Open: http://localhost:5173/
 ## API
 `POST /v1.0/me/sendMail`
 
+Request Body:
+```json
+{
+    "subject": "Your Subject",
+    "body": "Your email body"
+}
+```
+
 Success:
 - `202 Accepted`
 - empty body
