@@ -6,12 +6,12 @@
   "scripts": {
     "prepare": "svelte-kit sync",
     "dev": "vite dev --host 0.0.0.0 --port 5173",
-    "build": "svelte-kit sync && vite build",
+    "build": "npm test && svelte-kit sync && vite build",
     "preview": "vite preview --host 0.0.0.0 --port 5173",
     "cf:dev": "npm run db:migrate:local && npm run build && wrangler pages dev .svelte-kit/cloudflare --ip 0.0.0.0 --port 5173 --local",
     "cf:deploy": "npm run build && wrangler deploy",
-    "db:migrate:local": "wrangler d1 execute mock_graph_mail --local --file migrations/0001_init.sql && wrangler d1 execute mock_graph_mail --local --file migrations/0002_add_to_name.sql",
-    "test": "vitest run",
+    "db:migrate:local": "wrangler d1 execute mock_graph_mail --local --file migrations/0001_init.sql || true && wrangler d1 execute mock_graph_mail --local --file migrations/0002_add_to_name.sql || true",
+    "test": "vitest run --reporter=verbose",
     "test:watch": "vitest"
   },
   "devDependencies": {
