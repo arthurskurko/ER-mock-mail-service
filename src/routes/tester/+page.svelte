@@ -45,11 +45,11 @@
   <div class="card">
     <div class="card-title mb-2">Request</div>
 
-    <label class="text-xs text-gray-600">Endpoint</label>
-    <input class="input mt-1 mb-3" bind:value={endpoint} />
+    <label class="text-xs text-gray-600" for="endpoint">Endpoint</label>
+    <input id="endpoint" class="input mt-1 mb-3" bind:value={endpoint} />
 
-    <label class="text-xs text-gray-600">JSON Body</label>
-    <textarea class="textarea mt-1 min-h-[360px]" bind:value={requestBody}></textarea>
+    <label class="text-xs text-gray-600" for="requestBody">JSON Body</label>
+    <textarea id="requestBody" class="textarea mt-1 min-h-[360px]" bind:value={requestBody}></textarea>
 
     <button class="btn btn-primary mt-3" disabled={loading} on:click={send}>
       {loading ? 'Sending…' : 'Send'}
